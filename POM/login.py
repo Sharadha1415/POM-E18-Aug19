@@ -46,33 +46,65 @@ import time
 # login_obj.enter_login_email('vamsi@gmail.com')
 # login_obj.enter_login_pwd('vamsi@12345')
 
+# ################################################################################
+#
+# ## STEP3
+#
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+# driver.implicitly_wait(10)
+#
+# driver.get('https://demowebshop.tricentis.com/')
+#
+# class Login:
+#
+#     def click_on_login(self):
+#         driver.find_element('xpath', '//a[text()="Log in"]').click()
+#
+#     def enter_login_email(self, email_id):
+#         driver.find_element('id', 'Email').send_keys(email_id)
+#
+#     def enter_login_pwd(self, pwd):
+#         driver.find_element('id', 'Password').send_keys(pwd)
+
+# ################################################################################
+#
+# ## STEP4
+#
+# class Login:
+#
+#     def click_on_login(self):
+#         driver.find_element('xpath', '//a[text()="Log in"]').click()
+#
+#     def enter_login_email(self, email_id):
+#         driver.find_element('id', 'Email').send_keys(email_id)
+#
+#     def enter_login_pwd(self, pwd):
+#         driver.find_element('id', 'Password').send_keys(pwd)
+
+## ERROR
+## Because there is no driver
+
 ################################################################################
 
-## STEP3
-
-from selenium import webdriver
-
-opts = webdriver.ChromeOptions()
-opts.add_experimental_option("detach", True)
-
-driver = webdriver.Chrome(opts)
-driver.implicitly_wait(10)
-
-driver.get('https://demowebshop.tricentis.com/')
+## STEP4
 
 class Login:
 
+    def __init__(self, driver):
+        self.driver = driver            ## self.driver --> driver = webdriver.Chrome()
+
     def click_on_login(self):
-        driver.find_element('xpath', '//a[text()="Log in"]').click()
+        self.driver.find_element('xpath', '//a[text()="Log in"]').click()
 
     def enter_login_email(self, email_id):
-        driver.find_element('id', 'Email').send_keys(email_id)
+        self.driver.find_element('id', 'Email').send_keys(email_id)
 
     def enter_login_pwd(self, pwd):
-        driver.find_element('id', 'Password').send_keys(pwd)
-
-
-
-
+        self.driver.find_element('id', 'Password').send_keys(pwd)
 
 
