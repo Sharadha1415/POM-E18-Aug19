@@ -163,7 +163,107 @@ STEP6   :   We stored locator name and locator value in a object_repository.
 STEP6 only. Removed all the commented lines
 '''
 
+# from object_repository.login_repo import LoginLocators
+#
+# login_l = LoginLocators()
+#
+# class Login:
+#
+#     def __init__(self, driver):
+#         self.driver = driver            ## self.driver --> driver = webdriver.Chrome()
+#
+#     def click_on_login(self):
+#         self.driver.find_element(*login_l.login_link).click()
+#
+#     def enter_login_email(self, email_id):
+#         self.driver.find_element(*login_l.login_email).send_keys(email_id)
+#
+#     def enter_login_pwd(self, pwd):
+#         self.driver.find_element(*login_l.login_pwd).send_keys(pwd)
+
+################################################################################
+'''
+STEP7   :   Created SeleniumWrapper class.
+            Storing the web-element methods inside the SeleniumWrapper class
+'''
+
+# from object_repository.login_repo import LoginLocators
+#
+# login_l = LoginLocators()
+#
+# class SeleniumWrapper:
+#
+#     def __init__(self, driver):
+#         self.driver = driver
+#
+#     def click_on_element(self, var_name):
+#         self.driver.find_element(*var_name).click()
+#
+#     def enter_data(self, var_name, data):
+#         self.driver.find_element(*var_name).send_keys(data)
+#
+# class Login:
+#
+#     def __init__(self, driver):
+#         self.driver = driver            ## self.driver --> driver = webdriver.Chrome()
+#         self.sel = SeleniumWrapper(driver)
+#
+#     def click_on_login(self):
+#         # self.driver.find_element(*login_l.login_link).click()
+#         self.sel.click_on_element(login_l.login_link)
+#
+#     def enter_login_email(self, email_id):
+#         # self.driver.find_element(*login_l.login_email).send_keys(email_id)
+#         self.sel.enter_data(login_l.login_email, email_id)
+#
+#     def enter_login_pwd(self, pwd):
+#         # self.driver.find_element(*login_l.login_pwd).send_keys(pwd)
+#         self.sel.enter_data(login_l.login_pwd, pwd)
+#
+
+################################################################################
+'''
+STEP7 only. Removed commented lines
+'''
+
+# from object_repository.login_repo import LoginLocators
+#
+# login_l = LoginLocators()
+#
+# class SeleniumWrapper:
+#
+#     def __init__(self, driver):
+#         self.driver = driver
+#
+#     def click_on_element(self, var_name):
+#         self.driver.find_element(*var_name).click()
+#
+#     def enter_data(self, var_name, data):
+#         self.driver.find_element(*var_name).send_keys(data)
+#
+# class Login:
+#
+#     def __init__(self, driver):
+#         self.driver = driver            ## self.driver --> driver = webdriver.Chrome()
+#         self.sel = SeleniumWrapper(driver)
+#
+#     def click_on_login(self):
+#         self.sel.click_on_element(login_l.login_link)
+#
+#     def enter_login_email(self, email_id):
+#         self.sel.enter_data(login_l.login_email, email_id)
+#
+#     def enter_login_pwd(self, pwd):
+#         self.sel.enter_data(login_l.login_pwd, pwd)
+
+################################################################################
+'''
+STEP8   :   Given SeleniumWrapper in webdriver_utility and  importing it
+
+'''
+
 from object_repository.login_repo import LoginLocators
+from generic_utilities.webdriver_utility import SeleniumWrapper
 
 login_l = LoginLocators()
 
@@ -171,18 +271,16 @@ class Login:
 
     def __init__(self, driver):
         self.driver = driver            ## self.driver --> driver = webdriver.Chrome()
+        self.sel = SeleniumWrapper(driver)
 
     def click_on_login(self):
-        self.driver.find_element(*login_l.login_link).click()
+        self.sel.click_on_element(login_l.login_link)
 
     def enter_login_email(self, email_id):
-        self.driver.find_element(*login_l.login_email).send_keys(email_id)
+        self.sel.enter_data(login_l.login_email, email_id)
 
     def enter_login_pwd(self, pwd):
-        self.driver.find_element(*login_l.login_pwd).send_keys(pwd)
-
-
-
+        self.sel.enter_data(login_l.login_pwd, pwd)
 
 
 
